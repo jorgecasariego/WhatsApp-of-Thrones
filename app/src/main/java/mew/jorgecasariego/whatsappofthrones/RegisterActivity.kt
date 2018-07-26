@@ -12,6 +12,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_register.*
+import mew.jorgecasariego.whatsappofthrones.messages.LatestMessagesActivity
+import mew.jorgecasariego.whatsappofthrones.models.User
 import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -102,6 +104,9 @@ class RegisterActivity : AppCompatActivity() {
         ref.setValue(user)
                 .addOnSuccessListener {
                     Log.d("RegisterActivity", "Finally we saved our user to Firebase Database")
+                    val intent = Intent(this, LatestMessagesActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
                 }
                 .addOnFailureListener {
 
@@ -109,4 +114,3 @@ class RegisterActivity : AppCompatActivity() {
     }
 }
 
-class User(val uid: String, val username: String, val profileImageUrl: String)
