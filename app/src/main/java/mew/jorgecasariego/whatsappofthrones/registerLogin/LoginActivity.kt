@@ -1,9 +1,10 @@
-package mew.jorgecasariego.whatsappofthrones
+package mew.jorgecasariego.whatsappofthrones.registerLogin
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
+import mew.jorgecasariego.whatsappofthrones.R
 
 class LoginActivity : AppCompatActivity() {
 

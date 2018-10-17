@@ -7,7 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
 import mew.jorgecasariego.whatsappofthrones.R
-import mew.jorgecasariego.whatsappofthrones.RegisterActivity
+import mew.jorgecasariego.whatsappofthrones.registerLogin.RegisterActivity
 
 class LatestMessagesActivity : AppCompatActivity() {
 

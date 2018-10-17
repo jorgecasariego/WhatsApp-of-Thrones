@@ -1,5 +1,6 @@
 package mew.jorgecasariego.whatsappofthrones.messages
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.google.firebase.database.DataSnapshot
@@ -13,10 +14,13 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_new_message.*
 import kotlinx.android.synthetic.main.user_row_new_message.view.*
 import mew.jorgecasariego.whatsappofthrones.R
-import mew.jorgecasariego.whatsappofthrones.R.id.recyclerview_newmessages
 import mew.jorgecasariego.whatsappofthrones.models.User
 
 class NewMessageActivity : AppCompatActivity() {
+
+    companion object {
+        val USER_KEY = "USER_KEY"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +47,14 @@ class NewMessageActivity : AppCompatActivity() {
                         adapter.add(UserItem(user))
                     }
 
+                }
+
+                adapter.setOnItemClickListener { item, view ->
+                    val userItem = item as UserItem
+                    val intent = Intent(this@NewMessageActivity, ChatLogActivity::class.java)
+                    intent.putExtra(USER_KEY, userItem.user)
+                    startActivity(intent)
+                    finish()
                 }
 
                 recyclerview_newmessages.adapter = adapter
